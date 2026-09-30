@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إلى جميلةِ الجميلات، رضوى 🤍 | Happy Birthday Rody</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Amiri:ital,wght@0,400;0,700;1,400&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        burgundy: {
+                            50: '#fcf2f4',
+                            100: '#f7dde2',
+                            200: '#f0bec8',
+                            500: '#90293e',
+                            700: '#6a1829',
+                            800: '#52121e',
+                            900: '#380912',
+                        },
+                        gold: {
+                            300: '#f6e093',
+                            400: '#e7c862',
+                            500: '#d4af37',
+                            600: '#aa8822',
+                        }
+                    },
+                    fontFamily: {
+                        arabic: ['Tajawal', 'sans-serif'],
+                        poetry: ['Amiri', 'serif'],
+                        cursive: ['Great Vibes', 'Alex Brush', 'cursive'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #2a0b12;
+            color: #4a1521;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Cards Styling */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 20px 40px rgba(56, 9, 18, 0.18), 0 0 25px rgba(212, 175, 55, 0.15);
+        }
+
+        .glass-player {
+            background: rgba(255, 245, 247, 0.88);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+        }
+
+        /* Wave Effect Animation on Background Cards */
+        .bg-wave-container {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            border-radius: inherit;
+        }
+
+        .bg-wave-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.5;
+            filter: contrast(1.05) brightness(0.98);
+            animation: gentleWave 18s ease-in-out infinite alternate;
+            transform-origin: center center;
+        }
+
+        @keyframes gentleWave {
+            0% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.06) rotate(1deg); }
+            100% { transform: scale(1.03) rotate(-1deg); }
+        }
+
+        /* Floating Hearts & Sparkles Particles */
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 20;
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(105vh) scale(0.3) rotate(0deg);
+                opacity: 0;
+            }
+            15% {
+                opacity: 0.85;
+            }
+            85% {
+                opacity: 0.85;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.2) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Music Pulse Animation */
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 15px rgba(144, 41, 62, 0.4); }
+            50% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.8); }
+        }
+
+        .pulse-music {
+            animation: pulseGlow 2.5s infinite;
+        }
+
+        /* Sound Bars Animation */
+        .sound-bar {
+            width: 3px;
+            background: #90293e;
+            border-radius: 3px;
+            animation: soundWave 1.2s ease-in-out infinite alternate;
+        }
+        .sound-bar:nth-child(1) { height: 12px; animation-delay: 0.1s; }
+        .sound-bar:nth-child(2) { height: 22px; animation-delay: 0.3s; }
+        .sound-bar:nth-child(3) { height: 16px; animation-delay: 0.2s; }
+        .sound-bar:nth-child(4) { height: 26px; animation-delay: 0.4s; }
+
+        .sound-bar.paused {
+            animation-play-state: paused !important;
+            height: 6px !important;
+        }
+
+        @keyframes soundWave {
+            0% { height: 6px; }
+            100% { height: 24px; }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #380912;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #90293e;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen text-burgundy-900 selection:bg-burgundy-200">
+
+    <!-- Background Canvas for Ambient Glow -->
+    <canvas id="bg-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+    <!-- Floating Particles Container -->
+    <div id="particles-container"></div>
+
+    <!-- Hidden HTML5 Audio Element -->
+    <audio id="bg-audio" loop preload="auto">
+        <!-- Default romantic instrumental sound -->
+        <source src="sound.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Floating Sticky Audio Toggle Button (Top Right) -->
+    <div class="fixed top-5 right-5 z-50">
+        <button id="floating-audio-btn" onclick="toggleAudio()" class="pulse-music flex items-center space-x-2 space-x-reverse bg-white/90 hover:bg-white text-burgundy-800 px-4 py-2.5 rounded-full shadow-2xl backdrop-blur-md border border-gold-300 transition-all duration-300 active:scale-95 group">
+            <i id="floating-audio-icon" class="fas fa-music text-burgundy-700 group-hover:rotate-12 transition-transform"></i>
+            <span id="floating-audio-text" class="text-xs font-bold text-burgundy-800">تشغيل الموسيقى 🎵</span>
+        </button>
+    </div>
+
+    <!-- MAIN CONTAINER -->
+    <main class="relative z-10 max-w-2xl mx-auto px-4 py-8 md:py-14 space-y-12">
+
+        <!-- CARD 1: MAIN COVER (SWANS BACKGROUND) -->
+        <section class="glass-card rounded-3xl p-6 sm:p-10 text-center relative overflow-hidden transition-all duration-500 hover:shadow-2xl">
+            <!-- Dynamic Background Image Container -->
+            <div class="bg-wave-container">
+                <img src="image1.jpeg" 
+                     alt="Swans and Flowers Aesthetics" 
+                     class="bg-wave-image"
+                     id="card1-bg">
+            </div>
+
+            <!-- Card Content -->
+            <div class="relative z-10 space-y-6 py-6 sm:py-10">
+                <!-- Golden Sparkle Icon -->
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-burgundy-100/80 text-gold-500 shadow-sm border border-gold-300/50 mb-2">
+                    <i class="fas fa-sparkles text-xl"></i>
+                </div>
+
+                <!-- Main Calligraphy English Heading -->
+                <h1 class="font-cursive text-5xl sm:text-7xl font-bold text-burgundy-800 leading-tight tracking-wide drop-shadow-sm">
+                    Happy birthday, <br class="sm:hidden"/>
+                    <span class="text-burgundy-700">my beautiful Rody</span>
+                </h1>
+
+                <!-- Decorative Divider -->
+                <div class="flex items-center justify-center space-x-3 space-x-reverse opacity-70">
+                    <span class="w-12 h-0.5 bg-gold-500 rounded-full"></span>
+                    <i class="fas fa-heart text-burgundy-500 text-xs"></i>
+                    <span class="w-12 h-0.5 bg-gold-500 rounded-full"></span>
+                </div>
+
+                <!-- English Subtitle Message -->
+                <p class="font-serif italic text-lg sm:text-2xl text-burgundy-900/90 max-w-lg mx-auto leading-relaxed px-2">
+                    Happy birthday, Roro! I pray that Allah makes your days as beautiful and wonderful as you are. ✨
+                </p>
+            </div>
+        </section>
+
+        <!-- CARD 2: POETRY & SOUND SECTION (SUNBURST BACKGROUND) -->
+        <section id="poetry-card" class="glass-card rounded-3xl p-6 sm:p-10 text-center relative overflow-hidden transition-all duration-500 hover:shadow-2xl">
+            <!-- Dynamic Background Image Container -->
+            <div class="bg-wave-container">
+                <img src="image2.jpeg" 
+                     alt="Sunburst Gold & Soft Light Background" 
+                     class="bg-wave-image scale-110"
+                     id="card2-bg">
+                <!-- Radial Gold Overlay for Central Glow -->
+            </div>
+
+            <!-- Card Content -->
+            <div class="relative z-10 space-y-8 py-4">
+                
+                <!-- Arabic Poetry Content -->
+                <div class="space-y-6">
+                    <span class="text-xs font-bold tracking-widest text-burgundy-700/80 uppercase bg-burgundy-100/60 px-4 py-1.5 rounded-full border border-burgundy-200">
+                        📜 مِن أجْل رَضوَى 
+                    </span>
+
+                    <div class="font-poetry text-xl sm:text-2xl md:text-3xl text-burgundy-900 font-bold leading-extraloose sm:leading-loose tracking-wide pt-2 space-y-3">
+                        <p class="hover:text-burgundy-700 transition-colors">أَشارَت إِلَيها الشَمسُ عِندَ غُروبِها</p>
+                        <p class="text-burgundy-800 hover:text-burgundy-600 transition-colors">تَقولُ إِذا اِسوَدَّ الدُجى فَاِطلِعي بَعدي</p>
+                        <div class="w-8 h-0.5 bg-gold-400/50 mx-auto my-2"></div>
+                        <p class="hover:text-burgundy-700 transition-colors">وَقالَ لَها البَدرُ المُنيرُ أَلا اِسفِري</p>
+                        <p class="text-burgundy-800 hover:text-burgundy-600 transition-colors">فَإِنَّكِ مِثلي في الكَمالِ وَفي السَعدِ</p>
+                    </div>
+
+                    <p class="text-sm font-semibold text-burgundy-700/90 pt-2 font-arabic">
+                        — عنترة بن شداد —
+                    </p>
+                </div>
+
+                <!-- Custom Integrated Audio Player Card -->
+                <div class="glass-player rounded-2xl p-4 sm:p-6 shadow-md border border-white/80 space-y-4 max-w-md mx-auto">
+                    <div class="flex items-center justify-between gap-4">
+                        <!-- Play/Pause Main Button -->
+                        <button id="player-play-btn" onclick="toggleAudio()" class="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-tr from-burgundy-800 to-burgundy-600 hover:from-burgundy-900 hover:to-burgundy-700 text-white rounded-full flex items-center justify-center shadow-lg transition transform active:scale-95">
+                            <i id="player-play-icon" class="fas fa-play text-lg sm:text-xl ml-0.5"></i>
+                        </button>
+
+                        <!-- Track Info & Visualizer -->
+                        <div class="flex-1 text-right">
+                            <div class="flex items-center justify-between">
+                                <h3 class="font-bold text-sm sm:text-base text-burgundy-900">موسيقى إهدائية للأميرة رضوى 🎶</h3>
+                                <!-- Animated Sound Waves -->
+                                <div id="sound-bars" class="flex items-end space-x-1 space-x-reverse h-6">
+                                    <div class="sound-bar paused"></div>
+                                    <div class="sound-bar paused"></div>
+                                    <div class="sound-bar paused"></div>
+                                    <div class="sound-bar paused"></div>
+                                </div>
+                            </div>
+                            <p id="player-status-text" class="text-xs text-burgundy-700/80 mt-0.5">اضغط للتشغيل أو الإيقاف</p>
+                        </div>
+                    </div>
+
+                    <!-- Progress Bar -->
+                    <div class="space-y-1.5">
+                        <div id="progress-container" onclick="seekAudio(event)" class="bg-burgundy-200/60 rounded-full h-2 overflow-hidden cursor-pointer relative">
+                            <div id="progress-bar" class="bg-gradient-to-r from-gold-500 to-burgundy-600 h-full w-0 transition-all duration-100"></div>
+                        </div>
+                        <div class="flex justify-between text-[11px] text-burgundy-800 font-mono">
+                            <span id="current-time">00:00</span>
+                            <span id="duration-time">00:00</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CARD 3: HEARTFELT MESSAGE (STAINED GLASS FLORAL BACKGROUND) -->
+        <section class="glass-card rounded-3xl p-6 sm:p-12 text-center relative overflow-hidden transition-all duration-500 hover:shadow-2xl">
+            <!-- Dynamic Background Image Container -->
+            <div class="bg-wave-container">
+                <img src="image3.jpeg" 
+                     alt="Stained Glass Floral Art with Butterflies" 
+                     class="bg-wave-image"
+                     id="card3-bg">
+                <!-- Warm Light Overlay -->
+            </div>
+
+            <!-- Card Content -->
+            <div class="relative z-10 space-y-6 py-4">
+                
+                <!-- Main Arabic Title -->
+                <h2 class="text-2xl sm:text-4xl font-bold text-burgundy-900 font-arabic leading-snug">
+                    إلى جميلةِ الجميلات، رضوى 🤍
+                </h2>
+
+                <div class="w-16 h-0.5 bg-gradient-to-r from-transparent via-gold-500 to-transparent mx-auto my-2"></div>
+
+                <!-- Heartfelt Arabic Text Paragraphs -->
+                <div class="space-y-5 text-base sm:text-lg text-burgundy-900/90 font-arabic leading-relaxed sm:leading-loose text-justify sm:text-center px-2 sm:px-6">
+                    <p class="font-medium text-burgundy-800">
+                        كلُّ عامٍ وأنتِ بخير، وكلُّ عامٍ وأنتِ أكثرُ قربًا من كلِّ ما تتمنّينه، وأبعدُ عن كلِّ ما يُحزن قلبكِ.
+                    </p>
+
+                    <p>
+                        أسأل الله أن يجعل عامكِ الجديد مليئًا بالأيام الجميلة، واللحظات التي تستحقّ أن تُحفظ في الذاكرة، وأن يرزقكِ فيه من الفرح ما يُنسيكِ كلَّ حزن، ومن الطمأنينة ما يُريح قلبكِ، ومن التوفيق ما يُقرّبكِ من أحلامكِ خطوةً بعد خطوة.
+                    </p>
+
+                    <p>
+                        دمتِ جميلةَ الروح كما أنتِ، ودامت ضحكتكِ التي تجعل للأيام طعمًا آخر. وأرجو أن تظلّ صداقتنا من الأشياء الجميلة التي نحملها معنا كلما مرّ بنا عام.
+                    </p>
+
+                    <p class="font-bold text-lg sm:text-xl text-burgundy-800 pt-3 border-t border-burgundy-200/60">
+                        كلُّ عامٍ وأنتِ بخير يا رضوى، وكلُّ عامٍ وأنتِ بخيرٍ وسلامٍ وفرح. 🤍
+                    </p>
+                </div>
+
+                <!-- Closing Hearts Icon -->
+                <div class="pt-4 flex justify-center space-x-2 space-x-reverse text-burgundy-600 text-lg">
+                    <i class="fas fa-heart animate-bounce"></i>
+                    <i class="fas fa-star text-gold-500"></i>
+                    <i class="fas fa-heart animate-bounce" style="animation-delay: 0.2s"></i>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Footer Footer Signature -->
+        <footer class="text-center py-4 text-xs text-burgundy-100/70 font-arabic space-y-1">
+            <p>صُنِعَ بِحُبٍّ خَاصٍّ لأَجلِ رَضوَى ✨ 2026</p>
+        </footer>
+
+    </main>
+
+    <script>
+        // Global State & Audio Logic
+        const audio = document.getElementById('bg-audio');
+        const floatBtnIcon = document.getElementById('floating-audio-icon');
+        const floatBtnText = document.getElementById('floating-audio-text');
+        const playerPlayIcon = document.getElementById('player-play-icon');
+        const playerStatusText = document.getElementById('player-status-text');
+        const progressBar = document.getElementById('progress-bar');
+        const currentTimeEl = document.getElementById('current-time');
+        const durationTimeEl = document.getElementById('duration-time');
+        const soundBars = document.querySelectorAll('.sound-bar');
+
+        let isPlaying = false;
+
+        // Toggle Audio Playback
+        function toggleAudio() {
+            if (isPlaying) {
+                audio.pause();
+                isPlaying = false;
+                updateAudioUI(false);
+            } else {
+                audio.play().then(() => {
+                    isPlaying = true;
+                    updateAudioUI(true);
+                }).catch(err => {
+                    console.log("Autoplay restricted by browser: ", err);
+                });
+            }
+        }
+
+        // Update UI Elements
+        function updateAudioUI(playing) {
+            if (playing) {
+                floatBtnIcon.className = 'fas fa-pause text-burgundy-700';
+                floatBtnText.innerText = 'إيقاف الموسيقى ⏸️';
+                playerPlayIcon.className = 'fas fa-pause text-lg sm:text-xl';
+                playerStatusText.innerText = 'الموسيقى تعمل الآن... 💖';
+                soundBars.forEach(bar => bar.classList.remove('paused'));
+            } else {
+                floatBtnIcon.className = 'fas fa-music text-burgundy-700';
+                floatBtnText.innerText = 'تشغيل الموسيقى 🎵';
+                playerPlayIcon.className = 'fas fa-play text-lg sm:text-xl ml-0.5';
+                playerStatusText.innerText = 'اضغط للتشغيل أو الإيقاف';
+                soundBars.forEach(bar => bar.classList.add('paused'));
+            }
+        }
+
+        // Format Seconds to MM:SS
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return "00:00";
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        // Audio Event Listeners
+        audio.addEventListener('timeupdate', () => {
+            if (audio.duration) {
+                const pct = (audio.currentTime / audio.duration) * 100;
+                progressBar.style.width = `${pct}%`;
+                currentTimeEl.innerText = formatTime(audio.currentTime);
+                durationTimeEl.innerText = formatTime(audio.duration);
+            }
+        });
+
+        audio.addEventListener('loadedmetadata', () => {
+            durationTimeEl.innerText = formatTime(audio.duration);
+        });
+
+        function seekAudio(e) {
+            const container = document.getElementById('progress-container');
+            const rect = container.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const width = rect.width;
+            if (audio.duration) {
+                audio.currentTime = (clickX / width) * audio.duration;
+            }
+        }
+
+        // Attempt First User Click Auto-play (Browsers Policy)
+        window.addEventListener('click', function startAudioOnInteraction() {
+            if (!isPlaying) {
+                audio.play().then(() => {
+                    isPlaying = true;
+                    updateAudioUI(true);
+                }).catch(() => {});
+            }
+            window.removeEventListener('click', startAudioOnInteraction);
+        }, { once: true });
+
+
+        // Falling Hearts & Flower Particles Generator
+        function createParticle() {
+            const container = document.getElementById('particles-container');
+            if (!container) return;
+
+            const particle = document.createElement('div');
+            particle.className = 'particle text-gold-400';
+            
+            const icons = ['🌸', '✨', '🤍', '💖', '🌺', '⭐'];
+            particle.innerText = icons[Math.floor(Math.random() * icons.length)];
+
+            const startLeft = Math.random() * 100;
+            const duration = 6 + Math.random() * 8;
+            const size = 12 + Math.random() * 20;
+
+            particle.style.left = `${startLeft}vw`;
+            particle.style.animationDuration = `${duration}s`;
+            particle.style.fontSize = `${size}px`;
+
+            container.appendChild(particle);
+
+            setTimeout(() => {
+                particle.remove();
+            }, duration * 1000);
+        }
+
+        setInterval(createParticle, 450);
+
+        // Ambient Canvas Background Particles Animation
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+
+        function resizeCanvas() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class GlowOrb {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.radius = 80 + Math.random() * 120;
+                this.vx = (Math.random() - 0.5) * 0.4;
+                this.vy = (Math.random() - 0.5) * 0.4;
+                this.color = ['rgba(144, 41, 62, 0.15)', 'rgba(212, 175, 55, 0.12)', 'rgba(247, 221, 226, 0.25)'][Math.floor(Math.random() * 3)];
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < -100) this.x = width + 100;
+                if (this.x > width + 100) this.x = -100;
+                if (this.y < -100) this.y = height + 100;
+                if (this.y > height + 100) this.y = -100;
+            }
+
+            draw() {
+                ctx.beginPath();
+                const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius);
+                gradient.addColorStop(0, this.color);
+                gradient.addColorStop(1, 'rgba(0,0,0,0)');
+                ctx.fillStyle = gradient;
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        const orbs = Array.from({ length: 12 }, () => new GlowOrb());
+
+        function animateCanvas() {
+            ctx.clearRect(0, 0, width, height);
+            orbs.forEach(orb => {
+                orb.update();
+                orb.draw();
+            });
+            requestAnimationFrame(animateCanvas);
+        }
+        animateCanvas();
+    </script>
+</body>
+</html>
